@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Générateur de citation</title>
+    </head>
+
+    <body>
+
+
+        <button onclick="generateOneQuote();">Générer 1 citation</button>
+
+        <div id="result"></div>
+
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <label>5 citations Max</label>
+
+        <input type="number" id="numberQuotes" name="number" size="500" min="1" max="5">
+        <br />
+
+        <button onclick="generateFiveQuotes();">Générer</button>
+
+        <br />
+        <div id="result2"></div>
+    
+    </body>
+
+</html>
+
+<script type="text/javascript"> 
+
+    let quote = {
+
+        part1: [
+            'Ce sont vos modes de pensées',
+            'Le travail est un des domaines',
+            'La réussite est un état d esprit',
+            'Vous êtes maître de votre vie',
+            'La discipline est un excellent maître'
+        ],
+
+        part2: [
+            ', qui décident si',
+            ', si vous aimez ce que vous faites',
+            ', soyez l histoire de réussite que vous chercher',
+            ', soyez l inspiration que les autres suivent',
+            ', soyez ceux qui survivent à une relation à distance'
+        ],
+
+        part3: [
+            ', vous allez réussir ou échouer.',
+            ', un nouveau monde s ouvrira à vous.',
+            ', vous êtes peut-être à un pas de la réussite.',
+            ', vous en avez les clefs.',
+            ', ce n est jamais une histoire de chance.'
+        ]
+
+    }
+/*
+    console.log(citation.part1);
+    console.log(citation.part2);
+    console.log(citation.part3);
+*/
+
+/*
+let numberQuotes = document.getElementById('numberQuotes').value;
+
+
+function isNumber(numberQuotes){
+    return !isNaN(parseFloat(numberQuotes)) && isFinite(numberQuotes);
+}
+*/
+
+function generateQuote() {
+
+    let part1Quote = quote.part1[Math.floor(Math.random()*quote.part1.length)];
+    let part2Quote = quote.part2[Math.floor(Math.random()*quote.part2.length)];
+    let part3Quote = quote.part3[Math.floor(Math.random()*quote.part3.length)];
+
+    let result = part1Quote + part2Quote + part3Quote;
+
+    return result;
+    
+}
+
+function generateOneQuote() {
+ 
+    let citation = generateQuote();
+
+    let finalQuote = document.getElementById('result');
+
+    finalQuote.textContent = citation;
+
+}
+
+
+function generateFiveQuotes() {
+
+    let result2 = '';
+    let generateCitation = generateQuote();
+    let numberQuotes = document.getElementById('numberQuotes').value;
+    let printResult2 = document.getElementById('result2');
+
+    function isFloat(numberQuotes) { 
+        return !!(numberQuotes % 1); 
+    }
+
+    var div = document.getElementById("result2");
+    var citations = "<ul>";
+
+    if (isFloat(numberQuotes) == true) {
+
+       /* result2 = "Vous devez rentrer un nombre entier !"; */
+
+       citations += "<li >Vous devez rentrer un nombre entier !</li>";               
+
+    } else if (numberQuotes < 1 || numberQuotes > 5) {
+
+        /*result2 = "il y'a une erreur de saisie le nombre de citation doit etre compris entre 1 et 5 pas plus ni moins ! ";*/
+
+        citations += "<li>il y'a une erreur de saisie le nombre de citation doit etre compris entre 1 et 5 pas plus ni moins !</li>";               
+
+    } else if (numberQuotes >= 1 || numberQuotes <= 5) {
+
+        
+       /* result2 = "Nombre OK";*/
+
+        
+        /*while(numberQuotes < 5){
+
+            numberQuotes++;
+            result2 += "coucou \n";
+            
+
+        }*/
+
+        for (i = 1; i <= numberQuotes ; i++) {
+
+            citations += "<li>" + generateQuote() + "</li>";
+
+            
+
+        }
+        
+        
+        
+    }
+    citations += "</ul>";
+    div.innerHTML = citations;
+
+}
+
+
+/* else if (numberQuotes%2 != 1 || numberQuotes%2 != 0) {
+
+    result2 = "Le nombre est décimal"; 
+
+} */
+
+/*|| numberQuotes */
+</script>
+
+
+
+ 

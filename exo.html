@@ -1,0 +1,45 @@
+
+<!-- Faire un input de type number
+
+    SI l'utilisateur à un age inférieur à 18 
+        "Ton age est inférieur à 18, tu es mineur !"
+    SINON SI l'utilisateur à un age supérieur à 18
+        "Ton age est supérieur à 18, tu es majeur !"
+    SINON SI l'utilisateur à un age égale ou supérieur à 100 
+        "Salut l'ancien ! tu es le bienvenu !"
+
+-->
+
+<label for="age">Quel âge à tu ?</label>
+
+<input type="number" id="age" name="number" required minlength="3" maxlength="3" size="10" required>
+
+<button onclick="ageUser();">OK</button>
+
+<div id="result"></div>
+
+<script type="text/javascript">
+
+	function ageUser(){
+
+		var age = document.getElementById('age').value;
+		var message = document.getElementById('result');
+
+		if(age < 18) {
+
+			result  = "Ton age est inférieur à 18, tu es mineur";
+			
+		} else if(age < 100) {
+
+			result = "Ton age est supérieur à 18, tu es majeur !";
+ 
+		} else if(age >= 100) {
+
+		 	result = "Salut l'ancien ! tu es le bienvenu !";
+		}
+
+		message.textContent = result;
+
+	}
+
+</script>
