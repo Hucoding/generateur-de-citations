@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <meta charset="UTF-8">
+        <title>Générateur de citation</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="./assets/css/style.css" type="text/css" />
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="./assets/favicon/favicon.png" type="image/png" />
+        <!-- Font-Awesome -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">    
+   
+    </head>
+
+    <body id="body">
+
+        <div class="content">
+
+            <div class="headContent">
+
+                <img class="headLogo" src="./assets/imgs/logo.png" alt="ampoule" />
+
+                <h1 class="titleH1">Générateur de citation</h1>
+                
+            </div><!-- /.headContent -->
+
+            <button id="justOneQuote" class="oneQuoteBtn">Générer 1 citation <i class="fa fa-cogs"></i></button>
+
+            <!-- Résultat pour 1 citation -->
+            <div id="result" class="result">
+                <ul id="myList" class="myList"></ul>
+            </div><!-- /.result -->
+
+
+            <div id="multiQuotesForm" class="fiveQuotesGenerate">
+
+                <label>5 citations Max</label>
+
+                <input type="number" class="numberQuotes" id="numberQuotes" name="number" size="500" min="1" max="5" />
+
+                <p>Sélectionner un thème :</p>
+
+                <button name="Réussite" id="successTheme" class="successBtn">Réussite <i class="fa fa-rocket" aria-hidden="true"></i></button>
+
+                <button name="Travail" id="workTheme" class="workBtn">Travail <i class="fa fa-briefcase" aria-hidden="true"></i></button>
+            
+            </div><!-- /.fiveQuotesGenerate  -->
+            
+            <!-- Résultat pour 1 à 5 citations -->
+            <div id="result2" class="result2">
+                <ol id="myList2" class="myList2"></ol>
+            </div><!-- /.result2 -->
+
+            <!-- Proposition au visiteur après génération de citations -->
+            <div class="yesOrNo" id="yesOrNo">
+
+                <p>Voulez vous générer de nouveau des citations ?</p>
+
+                <button name="OUI" id="yes" class="yes">OUI <i class="fa fa-check-circle"></i></button>
+                
+                <button name="NON" id="no" class="no">NON <i class="fa fa-times"></i></button>
+
+                <p class="infoMessage"><i class="fa fa-info-circle"></i>  Si vous cliquer sur OUI vous pourrez de nouveau générer des citations avec le thème de votre choix.
+                Si vous décider de ne pas réitérer et donc de cliquer sur NON rien ne se passera.</p>
+                
+            </div><!-- /yesOrNo -->
+
+        </div><!-- /.content -->
+
+        <footer class="footer">
+
+            <div class="footerContent">
+
+                <p> CE SITE À ÉTÉ RÉALISÉ DANS LE CADRE DE LA FORMATION - OPENCLASSROOMS - DÉVELOPPEUR FRONT-END </p>
+                <a class="websiteOfCreator" href="https://www.hugo-muttoni.com">réalisé par hugo-muttoni.com</a>
+
+                <!-- Étape 1 -->
+                <script type="text/javascript" src="./assets/js/etape1.js"></script>
+                
+                <!-- Étape 2 -->
+                <script type="text/javascript" src="./assets/js/etape2.js"></script>
+
+            </div>
+
+        </footer><!-- /footer -->
+        
+    </body><!-- /body -->
+    
+</html>
+
+
