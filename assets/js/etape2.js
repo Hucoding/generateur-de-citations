@@ -92,7 +92,7 @@ function generateMultiQuotes(event) {
         //Paramètre concernant 'disabled' (passage de disabled à true)
         let printYesOrNoDiv = true;
 
-        //Paramètre concernant la visibilité de la div yesOrNo 
+        //Paramètre concernant la visibilité de la div yesOrNo
         let visibilityOfYesOrNoDiv = 'visible';
 
         for (let i = 1; i <= askNumberQuotes; i++) {
