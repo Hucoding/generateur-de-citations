@@ -11,7 +11,7 @@
 */
 
 //Fonction qui gère les erreurs
-function displayErrors(e) {
+function displayErrors(errors) {
 
     let myList2 = document.getElementById('myList2');
     
@@ -26,23 +26,23 @@ function displayErrors(e) {
     //initialisation des erreurs à 1
     nbError = 1;
 
-    e.forEach(
+    errors.forEach(
         
         (error) => {
 
-        let quoteList = document.createElement("LI");
+        let errorList = document.createElement("LI");
 
         //Style > couleur orange pour les erreurs
-        li.style.color = "red";
+        errorList.style.color = "red";
 
         //on place le li dans un ul
-        myList2.appendChild(quoteList);
+        myList2.appendChild(errorList);
 
         //text = nombre d'erreur - "citation"
         let text = document.createTextNode(error);
 
         //Affichage de la citation dans ul > li 
-        quoteList.appendChild(text);
+        errorList.appendChild(text);
 
     });
 
@@ -109,7 +109,7 @@ function generateMultiQuotes(event) {
 
     }
 
-    
+
 }
 
 //Fonction concernant le choix et le formulaire après génération des citations
@@ -124,7 +124,7 @@ function choiceAfterGenerate(event) {
     let disabledYes = false;
 
     //Paramètres concernant disabled pour le button No
-    let disabledNoOrjustOneQuote = false;
+    let disabledNoOrjustOneQuote = true;
 
     //Paramètre concernant la visibilité de la div yesOrNo (on cache la div avec 'hidden')
     let visibilityOfYesOrNo = 'hidden';
