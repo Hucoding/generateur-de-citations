@@ -13,6 +13,7 @@
 //Fonction qui gère les erreurs
 function displayErrors(errors) {
 
+    //création d'un élément li
     let myList2 = document.getElementById('myList2');
     
     //tant qu'ont a un enfant dans l'ol
@@ -26,8 +27,10 @@ function displayErrors(errors) {
     //initialisation des erreurs à 1
     nbError = 1;
 
+    // ?
     errors.forEach(
         
+        //?
         (error) => {
 
         let errorList = document.createElement("LI");
@@ -48,7 +51,7 @@ function displayErrors(errors) {
 
 }
 
-//Fonction pour vérifier si le nombre est float
+//Fonction pour vérifier si le nombre ajouter par l'utilisateur est de type float
 function isFloat(numberQuotes) { 
     return !!(numberQuotes % 1); 
 }
@@ -78,22 +81,26 @@ function generateMultiQuotes(event) {
     //si le nombre d'erreur est supérieur à 0
     if(errors.length > 0) {
 
+        //Alors on affiche l'erreur 
         displayErrors(errors);
-        
+
     } else {
 
         //initialisation d'un tableau vide de citations
         let tableOfQuotes = [];
 
+        //Paramètre concernant 'disabled' (passage de disabled à true)
         let printYesOrNoDiv = true;
 
+        //Paramètre concernant la visibilité de la div yesOrNo 
         let visibilityOfYesOrNoDiv = 'visible';
 
         for (let i = 1; i <= askNumberQuotes; i++) {
+
             //ajout de la citation dans un tableau
             tableOfQuotes.push(generateOneQuote(event, true));
 
-            //on bloque les fonctionnalitées à la génération des citations en passant disabled à true sur les ids suivants :
+            //on bloque les fonctionnalitées (input et click) à la génération des citations en passant 'disabled' à 'true' sur les ids suivants :
             // numberQuotes, successTheme, workTheme
             document.getElementById("numberQuotes").disabled = printYesOrNoDiv;
             document.getElementById("successTheme").disabled = printYesOrNoDiv;
@@ -104,7 +111,6 @@ function generateMultiQuotes(event) {
 
         }
         
-        //résultat final
         insertQuotes(tableOfQuotes, event);
 
     }
@@ -112,7 +118,7 @@ function generateMultiQuotes(event) {
 
 }
 
-//Fonction concernant le choix et le formulaire après génération des citations
+//Fonction concernant le choix de l'utilisateur après génération des citations
 function choiceAfterGenerate(event) {
 
     let target = event.target;
@@ -120,13 +126,13 @@ function choiceAfterGenerate(event) {
     //Paramètre de l'input nombre de citations souhaitée
     let inputOfNumber = document.getElementById("numberQuotes");
 
-    //Paramètre concernant disabled pour le button Yes
+    //Paramètre concernant 'disabled' pour le button Yes
     let disabledYes = false;
 
-    //Paramètres concernant disabled pour le button No
+    //Paramètres concernant 'disabled' pour le button No
     let disabledNoOrjustOneQuote = true;
 
-    //Paramètre concernant la visibilité de la div yesOrNo (on cache la div avec 'hidden')
+    //Paramètre concernant la visibilité de la div yesOrNo 
     let visibilityOfYesOrNo = 'hidden';
 
     //Si on sélectionne le bouton OUI
@@ -154,7 +160,6 @@ function choiceAfterGenerate(event) {
 
         //on vide l'input
         inputOfNumber.value = "";
-
 
     } 
 
