@@ -1,3 +1,4 @@
+
 //Etape 2 : des citations configurables
 
 /*
@@ -9,6 +10,218 @@
     - Une fois les citations générées, proposer de générer de nouvelles citations ou d'arrêter là le programme
 
 */
+
+// Morceaux de citation des différents thèmes 
+let quotes = {
+
+    //THEME - citation réussite
+    success: {
+
+        firstPart: [
+            'Ce sont vos modes de pensées',
+            'Le travail est un des domaines',
+            'La réussite est un état d esprit',
+            'Vous êtes maître de votre vie',
+            'La discipline est un excellent maître'
+        ],
+
+        middlePart: [
+            ', qui décident si',
+            ', si vous aimez ce que vous faites',
+            ', soyez l histoire de réussite que vous chercher',
+            ', soyez l inspiration que les autres suivent',
+            ', soyez ceux qui survivent à une relation à distance'
+        ],
+
+        lastPart: [
+            ', vous allez réussir ou échouer.',
+            ', un nouveau monde s ouvrira à vous.',
+            ', vous êtes peut-être à un pas de la réussite.',
+            ', vous en avez les clefs.',
+            ', ce n est jamais une histoire de chance.'
+        ]
+
+    },
+
+    //THEME - citation sur le travail
+    work: {
+
+        firstPart: [
+            'Le travail paie dans le futur',
+            'Le travail n est pas seulement une nécessité',
+            'Les rêves donnent du travail',
+            'Travail avec courage et persévèrance',
+            'Travaillez dur'
+        ],
+
+        middlePart: [
+            ', pour en être beaucoup récompensé',
+            ', quand le travail est un plaisir',
+            ', plus vous travaillez',
+            ', le travail est l occasion de se redécouvrir soit même',
+            ', le travail c est la santé'
+        ],
+
+        lastPart: [
+            ', la paresse elle paie comptant.',
+            ', la vie est belle.',
+            ', car la tenacité permet d atteindre l excellence.',
+            ', plus elle vous sourit.',
+            ', mais le travail finit toujours par payer.'
+        ]
+
+    }
+
+}
+
+//On masque la div yesOrNo qui ne s'affiche qu'à la génération de plusieurs citations (étape2)
+document.getElementById('yesOrNo').style.visibility = 'hidden';
+
+//Nombre maximum de citations pouvant être générées (étape2)
+let maxNumberQuotes = 5;
+
+//Fonction qui retourne un nombre aléatoire
+function maxNumber(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
+
+//Composition d'une citation
+let myQuote = {
+    constructQuote: function (firstPart, middlePart, lastPart){
+        this.firstPart = firstPart;
+        this.middlePart = middlePart;
+        this.lastPart = lastPart;
+        let construct = this.firstPart + this.middlePart + this.lastPart;
+        return construct;
+    }
+};
+
+//Objet pour la création d'une seule citation
+let oneQuoteGenerateThemeObject = Object.create(myQuote);
+
+buttonSuccessTheme = document.getElementById('successTheme');
+buttonWorkTheme = document.getElementById('workTheme');
+buttonYes = document.getElementById('yes');
+buttonNo = document.getElementById('no');
+
+
+//Bouton pour le Thème réussite
+buttonSuccessTheme.addEventListener('click', 
+    event => {
+        generateMultiQuotes(event);
+    }
+);
+
+//Bouton pour le Thème Travail
+buttonWorkTheme.addEventListener('click', 
+    event => {
+        generateMultiQuotes(event);
+    }
+);
+
+//Bouton OUI
+buttonYes.addEventListener('click', 
+    event => {
+        choiceAfterGenerate(event);
+    }
+);
+
+//Bouton NON
+buttonNo.addEventListener('click', 
+    event => {
+        choiceAfterGenerate(event);
+    }
+);
+
+
+//Génération d'une citation en fonction de l'id du bouton cliquer par l'utilisateur
+function generateOneQuoteWithTheme(event) {
+
+    let target = event.target;
+
+    //Si le thème 'Réussite' est choisi
+    if (target.id == "successTheme") {
+
+        //Theme sélectionner pour générer plusieurs citations avec le theme "Réussite"
+        let multiQuoteGenerateWithSuccessTheme = quotes.success;
+        return multiQuoteGenerateWithSuccessTheme;
+    
+    //Sinon si le thème 'Travail' est choisi
+    } else if (target.id  == "workTheme") {
+
+        //Theme sélectionner pour générer une plusieurs citation avec le theme "Travail"
+        let multiQuoteGenerateWithWorkTheme = quotes.work;
+        return multiQuoteGenerateWithWorkTheme;
+    
+    } 
+
+} 
+
+//fonction pour la génération d'une citation
+function generateOneQuote(event, multi = false) {
+
+    let quoteWithTheme = generateOneQuoteWithTheme(event);
+    
+    let firstPart  = quoteWithTheme.firstPart[maxNumber(maxNumberQuotes)];
+    let middlePart = quoteWithTheme.middlePart[maxNumber(maxNumberQuotes)];
+    let lastPart = quoteWithTheme.lastPart[maxNumber(maxNumberQuotes)];
+
+    //Cette variable 'oneQuoteGenerate' contient construction de la citation avec les différentes parties (firstPart + middlePart + lastPart)
+    let oneQuoteGenerate = oneQuoteGenerateThemeObject.constructQuote(firstPart, middlePart, lastPart);
+
+    if(!multi) {
+        insertQuotes(oneQuoteGenerate, event);
+    }
+        
+}
+
+//Fonction pour insérer les citations 
+function insertQuotes(quote) {
+    
+    // Définition d'un array vide au cas ou il y aurait plusieurs citations à générer
+    //arrayQuote est créer pour ne pas avoir l'erreur du forEach car forEarch ne peut pas une fonction d'une string
+    let arrayQuote = []; 
+
+    if (typeof quote == 'object') { 
+        arrayQuote = quote;
+    }
+
+    //Liste concernant la 2ème étape
+    let myList2 = document.getElementById('myList2'); 
+
+    //tant qu'ont a un enfant dans myList2
+    while(myList2.firstChild) {
+
+        //on supprime le dernier enfant (pour ne pas qu'il s'affiche à la suite)
+        myList2.removeChild(myList2.lastChild);
+
+    }
+
+    // Pour chaque citations (entrée) du tableau on réalise les actions suivantes :
+    // on édite une citation dans myList2 avec un li et on intégre notre citation générée.
+    arrayQuote.forEach(
+
+        (quote) => {
+
+            //Liste concernant la 2ème étape
+            let myList2 = document.getElementById('myList2');
+
+            //création d'un  élément li
+            let quoteList = document.createElement("LI");
+
+            //passage de la citation dans la liste de l'étape 2
+            myList2.appendChild(quoteList);
+
+            let text = document.createTextNode(quote);
+
+            //Affichage de la citation  
+            quoteList.appendChild(text);
+
+        }
+    );
+    
+}
+
 
 //Fonction qui gère les erreurs
 function displayErrors(errors) {
@@ -33,21 +246,22 @@ function displayErrors(errors) {
         //?
         (error) => {
 
-        let errorList = document.createElement("LI");
+            let errorList = document.createElement("LI");
 
-        //Style > couleur orange pour les erreurs
-        errorList.style.color = "red";
+            //Style > couleur orange pour les erreurs
+            errorList.style.color = "red";
 
-        //on place le li dans un ul
-        myList2.appendChild(errorList);
+            //on place le li dans un ul
+            myList2.appendChild(errorList);
 
-        //text = nombre d'erreur - "citation"
-        let text = document.createTextNode(error);
+            //text = nombre d'erreur - "citation"
+            let text = document.createTextNode(error);
 
-        //Affichage de la citation dans ul > li 
-        errorList.appendChild(text);
+            //Affichage de la citation dans ul > li 
+            errorList.appendChild(text);
 
-    });
+        }
+    );
 
 }
 
@@ -149,7 +363,7 @@ function choiceAfterGenerate(event) {
         document.getElementById('myList2').innerHTML = "";
 
     //Sinon si on selectionne "NON" ou le bouton "générée 1 citation"
-    } else if (target.id == "no" || target.id == "justOneQuote") {
+    } else if (target.id == "no") {
 
         document.getElementById("numberQuotes").disabled = disabledNoOrjustOneQuote;
         document.getElementById("successTheme").disabled = disabledNoOrjustOneQuote;

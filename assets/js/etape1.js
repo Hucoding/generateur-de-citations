@@ -264,10 +264,10 @@ function insertQuotes(quote, event) {
 
     } else {
 
-        // ?
+        // Pour chaque citations (entrée) du tableau on réalise les actions suivantes :
+        // on édite une citation dans myList2 avec un li et on intégre notre citation générée.
         arrayQuote.forEach(
 
-            // ?
             (quote) => {
 
                 //Liste concernant la 2ème étape
