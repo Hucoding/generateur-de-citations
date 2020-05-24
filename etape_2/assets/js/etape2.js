@@ -77,7 +77,6 @@ let quotes = {
 //On masque la div yesOrNo qui ne s'affiche qu'à la génération de plusieurs citations (étape2)
 document.getElementById('yesOrNo').style.visibility = 'hidden';
 
-//Nombre maximum de citations pouvant être générées (étape2)
 let maxNumberQuotes = 5;
 
 //Fonction qui retourne un nombre aléatoire
@@ -273,7 +272,7 @@ function isFloat(numberQuotes) {
 //Fonction pour générer jusqu'à 5 citations
 function generateMultiQuotes(event) {
 
-    let maxNumberQuotes = 5;
+    let maxNumberQuotesGenerate = 5;
 
     //Récupération du chiffre rentré par le visiteur
     let askNumberQuotes = document.getElementById('numberQuotes').value;
@@ -283,10 +282,10 @@ function generateMultiQuotes(event) {
 
     //si le nombre rentré est égale à 0
     if(askNumberQuotes == 0) {
-        errors.push(`il y'a une erreur de saisie le nombre de citation doit etre compris entre 1 et ${maxNumberQuotes} pas plus ni moins !`);
+        errors.push(`il y'a une erreur de saisie le nombre de citation doit etre compris entre 1 et ${maxNumberQuotesGenerate} pas plus ni moins !`);
     //sinon si le nombre rentré est supérieur à 5 
     } else if(askNumberQuotes > maxNumberQuotes) {
-        errors.push(`Vous ne pouvez pas générer plus de ${maxNumberQuotes} citations !`);
+        errors.push(`Vous ne pouvez pas générer plus de ${maxNumberQuotesGenerate} citations !`);
     //sinon si le nombre rentré est un nombre décimal
     } else if(isFloat(askNumberQuotes) == true) {
         errors.push(`Vous devez rentrer un nombre entier !`);

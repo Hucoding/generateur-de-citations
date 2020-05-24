@@ -118,6 +118,7 @@ function generateOneQuoteWithTheme(event) {
 
     let target = event.target;
 
+    //Si l'utilisateur clique sur le bouton ayant l'id "justOneQuote"
     if (target.id  === "justOneQuote") {
 
         let oneQuoteGenerateTheme = quotes.success;

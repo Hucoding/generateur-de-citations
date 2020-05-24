@@ -5,6 +5,28 @@ html, body {
     height: 100%;
 }
 
+.menu {
+    margin: 0 auto;
+}
+
+.step1,
+.step2 {
+
+    background-color: #223A5E;
+    cursor: pointer;
+    border: 1px solid #FFD700;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    margin: 5px;
+    width: 100px; 
+    text-decoration: none;
+    color: #FFD700; 
+    
+}
+
+
 /*** Corps de la page ***/
 body {
 
