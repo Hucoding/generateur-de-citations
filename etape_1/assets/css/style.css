@@ -9,7 +9,7 @@ html, body {
     margin: 0 auto;
 }
 
-.step1,
+.step2AndStep1,
 .step2 {
 
     background-color: #223A5E;
@@ -20,10 +20,9 @@ html, body {
     font-family: 'Manrope', sans-serif;
     font-weight: 700;
     margin: 5px;
-    width: 100px; 
+    width: 120px; 
     text-decoration: none;
     color: #FFD700; 
-    
 }
 
 

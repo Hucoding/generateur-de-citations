@@ -74,10 +74,6 @@ let quotes = {
 
 }
 
-//On masque la div yesOrNo qui ne s'affiche qu'à la génération de plusieurs citations (étape2)
-document.getElementById('yesOrNo').style.visibility = 'hidden';
-
-//Nombre maximum de citations pouvant être générées (étape2)
 let maxNumberQuotes = 5;
 
 //Fonction qui retourne un nombre aléatoire
@@ -101,44 +97,11 @@ let oneQuoteGenerateThemeObject = Object.create(myQuote);
 
 loadBody = document.getElementById('body');
 buttonJustOneQuote = document.getElementById('justOneQuote');
-buttonSuccessTheme = document.getElementById('successTheme');
-buttonWorkTheme = document.getElementById('workTheme');
-buttonYes = document.getElementById('yes');
-buttonNo = document.getElementById('no');
 
 //Bouton pour générer 1 seule citation
 buttonJustOneQuote.addEventListener('click',
     event => {
         generateOneQuote(event);
-        choiceAfterGenerate(event);
-    }
-);
-
-//Bouton pour le Thème réussite
-buttonSuccessTheme.addEventListener('click', 
-    event => {
-        generateMultiQuotes(event);
-    }
-);
-
-//Bouton pour le Thème Travail
-buttonWorkTheme.addEventListener('click', 
-    event => {
-        generateMultiQuotes(event);
-    }
-);
-
-//Bouton OUI
-buttonYes.addEventListener('click', 
-    event => {
-        choiceAfterGenerate(event);
-    }
-);
-
-//Bouton NON
-buttonNo.addEventListener('click', 
-    event => {
-        choiceAfterGenerate(event);
     }
 );
 
@@ -155,27 +118,13 @@ function generateOneQuoteWithTheme(event) {
 
     let target = event.target;
 
-    //Si le thème 'Réussite' est choisi
-    if (target.id == "successTheme") {
-
-        //Theme sélectionner pour générer plusieurs citations avec le theme "Réussite"
-        let multiQuoteGenerateWithSuccessTheme = quotes.success;
-        return multiQuoteGenerateWithSuccessTheme;
-    
-    //Sinon si le thème 'Travail' est choisi
-    } else if (target.id  == "workTheme") {
-
-        //Theme sélectionner pour générer une plusieurs citation avec le theme "Travail"
-        let multiQuoteGenerateWithWorkTheme = quotes.work;
-        return multiQuoteGenerateWithWorkTheme;
-    
-    //Sinon si l'utilisateur choisi de ne générer qu'une seule citation 
-    } else if (target.id  === "justOneQuote") {
+    //Si l'utilisateur clique sur le bouton ayant l'id "justOneQuote"
+    if (target.id  === "justOneQuote") {
 
         let oneQuoteGenerateTheme = quotes.success;
         return oneQuoteGenerateTheme;
     
-    //Sinon génère une citation quoi qu'il arrive 
+    //Sinon génère une citation en auto quoi qu'il arrive 
     } else {
 
         let oneQuoteGenerateTheme = quotes.success;
@@ -183,10 +132,10 @@ function generateOneQuoteWithTheme(event) {
 
     }
 
-} 
+}
 
 //fonction pour la génération d'une citation
-function generateOneQuote(event, multi = false) {
+function generateOneQuote(event) {
 
     let quoteWithTheme = generateOneQuoteWithTheme(event);
     
@@ -197,11 +146,7 @@ function generateOneQuote(event, multi = false) {
     //Cette variable 'oneQuoteGenerate' contient construction de la citation avec les différentes parties (firstPart + middlePart + lastPart)
     let oneQuoteGenerate = oneQuoteGenerateThemeObject.constructQuote(firstPart, middlePart, lastPart);
 
-    if(!multi) {
-        insertQuotes(oneQuoteGenerate, event);
-    } else {
-        return oneQuoteGenerate;
-    }
+    insertQuotes(oneQuoteGenerate, event);
 
 }
 
@@ -219,9 +164,6 @@ function insertQuotes(quote, event) {
     //Liste concernant la 1ère étape
     let myList = document.getElementById('myList');
 
-    //Liste concernant la 2ème étape
-    let myList2 = document.getElementById('myList2'); 
-
     //si l'utilisateur à cliquer sur 'Générer 1 citation'
     if(event.target.id == "justOneQuote") {
 
@@ -233,18 +175,7 @@ function insertQuotes(quote, event) {
     
         }
 
-    //sinon si l'utilisateur n'a pas cliquer sur 'Générer 1 citation'
-    } else if(event.target.id != "justOneQuote") {
-
-        //tant qu'ont a un enfant dans myList2
-        while(myList2.firstChild) {
-
-            //on supprime le dernier enfant (pour ne pas qu'il s'affiche à la suite)
-            myList2.removeChild(myList2.lastChild);
-
-        }
-        
-    }
+    } 
 
     //Si le tableau de citation est vide
     if(arrayQuote.length == 0) {
@@ -260,30 +191,6 @@ function insertQuotes(quote, event) {
         //Affichage de la citation 
         quoteList.appendChild(text);
 
-    } else {
-
-        // Pour chaque citations (entrée) du tableau on réalise les actions suivantes :
-        // on édite une citation dans myList2 avec un li et on intégre notre citation générée.
-        arrayQuote.forEach(
-
-            (quote) => {
-
-                //Liste concernant la 2ème étape
-                let myList2 = document.getElementById('myList2');
-
-                //création d'un  élément li
-                let quoteList = document.createElement("LI");
-
-                //passage de la citation dans la liste de l'étape 2
-                myList2.appendChild(quoteList);
-
-                let text = document.createTextNode(quote);
-
-                //Affichage de la citation  
-                quoteList.appendChild(text);
-
-            }
-        );
-    }
+    } 
     
 }
