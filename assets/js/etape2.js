@@ -24,13 +24,8 @@ function displayErrors(errors) {
 
     }
 
-    //initialisation des erreurs à 1
-    nbError = 1;
-
-    // ?
     errors.forEach(
         
-        //?
         (error) => {
 
         let errorList = document.createElement("LI");

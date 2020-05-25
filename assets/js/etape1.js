@@ -197,7 +197,6 @@ function generateOneQuote(event, multi = false) {
     //Cette variable 'oneQuoteGenerate' contient construction de la citation avec les différentes parties (firstPart + middlePart + lastPart)
     let oneQuoteGenerate = oneQuoteGenerateThemeObject.constructQuote(firstPart, middlePart, lastPart);
 
-    // ?
     if(!multi) {
         insertQuotes(oneQuoteGenerate, event);
     } else {
@@ -213,7 +212,6 @@ function insertQuotes(quote, event) {
     //arrayQuote est créer pour ne pas avoir l'erreur du forEach car forEarch ne peut pas une fonction d'une string
     let arrayQuote = []; 
 
-    // ?
     if (typeof quote == 'object') { 
         arrayQuote = quote;
     }

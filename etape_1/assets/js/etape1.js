@@ -157,7 +157,6 @@ function insertQuotes(quote, event) {
     //arrayQuote est créer pour ne pas avoir l'erreur du forEach car forEarch ne peut pas une fonction d'une string
     let arrayQuote = []; 
 
-    // ?
     if (typeof quote == 'object') { 
         arrayQuote = quote;
     }
@@ -195,5 +194,3 @@ function insertQuotes(quote, event) {
     } 
     
 }
-
-

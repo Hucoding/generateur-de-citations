@@ -1,4 +1,3 @@
-
 //Etape 2 : des citations configurables
 
 /*
@@ -170,6 +169,8 @@ function generateOneQuote(event, multi = false) {
 
     if(!multi) {
         insertQuotes(oneQuoteGenerate, event);
+    } else {
+        return oneQuoteGenerate;
     }
         
 }
@@ -236,13 +237,8 @@ function displayErrors(errors) {
 
     }
 
-    //initialisation des erreurs à 1
-    nbError = 1;
-
-    // ?
     errors.forEach(
         
-        //?
         (error) => {
 
             let errorList = document.createElement("LI");
