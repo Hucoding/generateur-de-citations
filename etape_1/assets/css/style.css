@@ -7,24 +7,26 @@ html, body {
 
 .menu {
     margin: 0 auto;
+    padding-top: 20px;
 }
 
-.step2AndStep1,
-.step2 {
+.step2,
+.step2AndStep1 {
 
     background-color: #223A5E;
     cursor: pointer;
     border: 1px solid #FFD700;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 5px 5px;
     font-family: 'Manrope', sans-serif;
     font-weight: 700;
+    font-size: 15px;
     margin: 5px;
     width: 120px; 
     text-decoration: none;
     color: #FFD700; 
-}
 
+}
 
 /*** Corps de la page ***/
 body {
@@ -53,6 +55,7 @@ body {
 .headLogo {
 
     height: 200px;
+    margin-top: 10px;
 
 }
 

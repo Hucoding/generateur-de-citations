@@ -78,6 +78,13 @@ document.getElementById('yesOrNo').style.visibility = 'hidden';
 
 let maxNumberQuotes = 5;
 
+function initialize() {
+
+    //optimisation de l'attribut max de l'input id => "numberQuotes"
+    document.getElementById("numberQuotes").setAttribute("max", maxNumberQuotes);
+
+}
+
 //Fonction qui retourne un nombre aléatoire
 function maxNumber(max) {
     return Math.floor(Math.random() * Math.floor(max));
@@ -97,6 +104,7 @@ let myQuote = {
 //Objet pour la création d'une seule citation
 let oneQuoteGenerateThemeObject = Object.create(myQuote);
 
+inputNumber = document.getElementById('numberQuotes');
 buttonSuccessTheme = document.getElementById('successTheme');
 buttonWorkTheme = document.getElementById('workTheme');
 buttonYes = document.getElementById('yes');
@@ -131,6 +139,28 @@ buttonNo.addEventListener('click',
     }
 );
 
+//identification de l'input cliquer par l'utilisateur
+inputNumber.addEventListener('click',
+    event => {
+        initialize(event);
+    }
+);
+
+//cette fonction à été créer pour mettre en place des solutions d'optimisations
+function initialize(event) {
+
+    let target = event.target;
+
+    //SI l'input est cliquer par l'utilisateur alors place la limite maxNumberQuotes
+    if (target.id == "numberQuotes") {
+
+        //optimisation de l'attribut max de l'input id => "numberQuotes"
+        document.getElementById("numberQuotes").setAttribute("max", maxNumberQuotes);
+
+    }
+
+}
+
 
 //Génération d'une citation en fonction de l'id du bouton cliquer par l'utilisateur
 function generateOneQuoteWithTheme(event) {
@@ -156,7 +186,7 @@ function generateOneQuoteWithTheme(event) {
 } 
 
 //fonction pour la génération d'une citation
-function generateOneQuote(event, multi = false) {
+function generateOneQuote(event, multi) {
 
     let quoteWithTheme = generateOneQuoteWithTheme(event);
     
